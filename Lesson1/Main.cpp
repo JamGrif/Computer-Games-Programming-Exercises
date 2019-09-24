@@ -1,11 +1,13 @@
-#include "Creature.h"
+#include "Hero.h"
+#include "Monster.h"
 
 int main() 
 {
-	Creature creatureobj1(0,0,"11111");
-	Creature creatureobj2(14, 6, "22222");
+	Hero test123(0,0,"11111", 5);
+	
 
 	
+
 
 }
 
