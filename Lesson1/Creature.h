@@ -5,6 +5,7 @@ class Creature
 {
 public:
 	Creature(int x, int y, std::string Name);
+	
 
 	void display();
 

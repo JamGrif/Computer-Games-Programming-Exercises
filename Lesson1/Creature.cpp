@@ -10,9 +10,9 @@ Creature::Creature(int x, int y, std::string Name)
 
 void Creature::display()
 {
-	std::cout << "Creatures x position is " << getX() << std::endl;
-	std::cout << "Creatures y position is " << getY() << std::endl;
-	std::cout << "The creatures name is " << getName() << std::endl;
+	std::cout << m_Name << "'s x position is " << getX() << std::endl;
+	std::cout << m_Name << "'s y position is " << getY() << std::endl;
+	//std::cout << m_Name << "'s name is " << getName() << std::endl;
 }
 
 void Creature::left()

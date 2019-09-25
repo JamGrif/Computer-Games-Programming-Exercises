@@ -1,11 +1,16 @@
 #pragma once
 #include "Creature.h"
-class Hero :
-	public Creature(int x, int x, std::string Name)
+class Hero : 
+	public Creature
 {
 public:
-	Hero(int Lives);
+	Hero(int x, int y, std::string Name, int Lives);
 
+	void display();
+
+	int GetLives();
+	void Respawn();
+	void LoseLife();
 
 private:
 	int m_Lives;
