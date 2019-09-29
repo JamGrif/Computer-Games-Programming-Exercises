@@ -34,7 +34,10 @@ int main()
 			}
 		}
 		heroobj.LoseLife();
-		heroobj.Respawn();
+		if (heroobj.GetLives() != 0) 
+		{
+			heroobj.Respawn();
+		}
 	}
 	system("CLS");
 	std::cout << "Monster has eaten hero!" << std::endl;
