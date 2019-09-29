@@ -57,7 +57,7 @@ private:
 	int getDamagePercentage();
 
 public:
-	Prop();
+	//Prop();
 	Prop(std::string name, int maxHitpoints, int startHitPoints) { m_name = name, m_maxHitPoints = maxHitpoints, m_currentHitPoints = startHitPoints;}
 
 	void displayDetails() { std::cout << m_name << "'s current health is " << m_currentHitPoints << " and has a max possible health of " << m_maxHitPoints << "." << std::endl; }
