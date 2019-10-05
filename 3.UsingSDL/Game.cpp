@@ -49,35 +49,22 @@ Game::~Game()
 
 void Game::GameLoop()
 {
-	while (true)
+	
+	while (!input->KeyIsPressed(KEY_ESCAPE)) //Game ends if escape is pressed
 	{
+
+		CheckKeyPressed();
 		SetDisplayColour();
 		Render();
-		
-		std::cout << red << std::endl;
-		std::cout << green << std::endl;
-		std::cout << blue << std::endl;
+
 	}
+
+	delete input;
+	input = nullptr;
 }
 
 void Game::SetDisplayColour(void)
 {
-	red++;
-	green++;
-	blue++;
-	if (red == 255) 
-	{
-		red = 30;
-	}
-	if (green == 255)
-	{
-		green = 30;
-	}
-	if (blue == 255)
-	{
-		blue = 30;
-	}
-	//Target renderer, red, green, blue, alpha
 	SDL_SetRenderDrawColor(m_Renderer, red, green, blue, 255);
 }
 
@@ -89,8 +76,30 @@ void Game::Render()
 	//show what we've drawn
 	SDL_RenderPresent(m_Renderer);
 
-	//pause for 5 seconds
-	//SDL_Delay(5000);
+}
 
+void Game::CheckKeyPressed()
+{
+	input->Update();
+	if (input->KeyIsPressed(KEY_R))
+	{
+		if (red++ > 255) { red = 0; }
+	}
+	if (input->KeyIsPressed(KEY_G))
+	{
+		if (green++ > 255) { green = 0; }
+	}
+	if (input->KeyIsPressed(KEY_B))
+	{
+		if (blue++ > 255) { blue = 0; }
+	}
+	if (input->KeyIsPressed(KEY_E))
+	{
+		red = 0, green = 0, blue = 0;
+	}
+	if (input->KeyIsPressed(KEY_N))
+	{
+		red = 255, green = 255, blue = 255;
+	}
 }
 
