@@ -2,7 +2,11 @@
 
 Input::Input()
 {
-	//m_keysPressed[] = NULL;
+	for (int i = 0; i < SIZE_OF_KEYS_PRESSED_ENUM; i++) 
+	{
+		m_keysPressed[i] = NULL;
+	}
+	
 }
 
 Input::~Input()
@@ -13,14 +17,14 @@ Input::~Input()
 void Input::Update()
 {
 	//loop through all the events in the event list
-	while (SDL_PollEvent(&m_event) != NULL) 
+	//|| SDL_PollEvent(&m_MouseEvent) != NULL
+	while (SDL_PollEvent(&m_KeyEvent) != NULL && SDL_PollEvent(&m_MouseEvent) != NULL)
 	{
-		//got an event. lets process it
 
-		//check for keydown
-		if (m_event.type == SDL_KEYDOWN) {
+		//first check for keydown
+		if (m_KeyEvent.type == SDL_KEYDOWN) {
 			//cache the code of key we pressed for easier debugging
-			SDL_Keycode keyPressed = m_event.key.keysym.sym;
+			SDL_Keycode keyPressed = m_KeyEvent.key.keysym.sym;
 
 			//update keys
 			switch (keyPressed) 
@@ -49,10 +53,10 @@ void Input::Update()
 			}
 		}
 
-		//check for key up
-		else if (m_event.type == SDL_KEYUP) 
+		//second check for key up
+		else if (m_KeyEvent.type == SDL_KEYUP)
 		{
-			SDL_Keycode keyPressed = m_event.key.keysym.sym;
+			SDL_Keycode keyPressed = m_KeyEvent.key.keysym.sym;
 
 			//update keys
 			switch (keyPressed)
@@ -76,6 +80,39 @@ void Input::Update()
 				break;
 			}
 		}
+
+		switch (m_MouseEvent.type) 
+		{
+		case SDL_MOUSEBUTTONDOWN:
+			std::cout << "test" << std::endl;
+			break;
+		}
+
+		//third check for mouse down
+		/*if (m_MouseEvent.type == SDL_MOUSEBUTTONDOWN) 
+		{
+			switch (m_MouseEvent.button.button) 
+			{
+			case SDL_BUTTON_LEFT:
+				std::cout << "Left mouse clicked" << std::endl;
+				break;
+			case SDL_BUTTON_RIGHT:
+				std::cout << "Left mouse clicked" << std::endl;
+				break;
+
+
+			}
+
+			
+
+
+
+		}*/
+
+
+
+		//fourth check for mouse up
+		
 	}
 }
 
