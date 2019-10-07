@@ -56,9 +56,10 @@ void Game::GameLoop()
 		CheckKeyPressed();
 		SetDisplayColour();
 		Render();
+		SDL_Delay(50);
 
 	}
-	std::cout << "test" << std::endl;
+	std::cout << "Game ended via escape" << std::endl;
 	delete input;
 	input = nullptr;
 }
@@ -85,34 +86,29 @@ void Game::CheckKeyPressed()
 	{
 		if (red == 255) { red = 0; }
 		red++;
-		std::cout << "Red value is " << red << std::endl;
-		input->m_keysPressed[KEY_R] = false;
+		//std::cout << "Red value is " << red << std::endl;
 	}
 	if (input->KeyIsPressed(KEY_G))
 	{
 		if (green == 255) { green = 0; }
 		green++;
-		std::cout << "Green value is " << green << std::endl;
-		input->m_keysPressed[KEY_G] = false;
+		//std::cout << "Green value is " << green << std::endl;
 	}
 	if (input->KeyIsPressed(KEY_B))
 	{
 		if (blue == 255) { blue = 0; }
 		blue++;
-		std::cout << "Blue value is " << blue << std::endl;
-		input->m_keysPressed[KEY_B] = false;
+		//std::cout << "Blue value is " << blue << std::endl;
 	}
 	if (input->KeyIsPressed(KEY_E))
 	{
 		red = 0, green = 0, blue = 0;
-		std::cout << "All colours set to 0!" << std::endl;
-		input->m_keysPressed[KEY_E] = false;
+		//std::cout << "All colours set to 0!" << std::endl;
 	}
 	if (input->KeyIsPressed(KEY_N))
 	{
 		red = 255, green = 255, blue = 255;
-		std::cout << "All colours set to 255!" << std::endl;
-		input->m_keysPressed[KEY_N] = false;
+		//std::cout << "All colours set to 255!" << std::endl;
 	}
 }
 
